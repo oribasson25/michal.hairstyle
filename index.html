@@ -536,7 +536,12 @@
       'images/צילום מסך 2026-07-02 ב-20.38.39.png',
       'images/צילום מסך 2026-07-02 ב-20.39.04.png',
       'images/צילום מסך 2026-07-02 ב-20.39.15.png',
-      'images/צילום מסך 2026-07-02 ב-20.39.29.png'
+      'images/צילום מסך 2026-07-02 ב-20.39.29.png',
+      'images/WhatsApp Image 2026-07-02 at 22.39.23.jpeg',
+      'images/WhatsApp Image 2026-07-02 at 22.41.02.jpeg',
+      'images/WhatsApp Image 2026-07-02 at 22.41.03.jpeg',
+      'images/WhatsApp Image 2026-07-02 at 22.41.03 (1).jpeg',
+      'images/WhatsApp Image 2026-07-02 at 22.41.03 (2).jpeg'
     ];
 
     var REVIEWS = [
@@ -555,11 +560,6 @@
     ['hero-wa','contact-wa','footer-wa','fab-wa'].forEach(function(id){ document.getElementById(id).href = WA_URL; });
     ['hero-ig','contact-ig','footer-ig'].forEach(function(id){ document.getElementById(id).href = IG_URL; });
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    /* Hero + about photos */
-    document.querySelectorAll('[data-img]').forEach(function(el){
-      el.src = enc(PORTFOLIO[parseInt(el.getAttribute('data-img'),10)]);
-    });
 
     /* ============ THEME TOGGLE ============ */
     var saved = null;
