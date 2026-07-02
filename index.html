@@ -335,7 +335,7 @@
 
   <!-- HEADER -->
   <header id="header">
-    <a href="#top" class="brand">Michal Haimov<span>.</span></a>
+    <a href="#top" class="brand"><span id="brandHeader">Michal Haimov</span><span>.</span></a>
     <div class="theme-toggle" role="group" aria-label="בחירת ערכת צבע">
       <button class="swatch blush active" data-theme="blush" aria-label="ערכת ורוד-בז'"></button>
       <button class="swatch lavender" data-theme="lavender" aria-label="ערכת לבנדר"></button>
@@ -346,12 +346,12 @@
   <section class="hero" id="top">
     <div class="hero-bg"></div>
     <div class="hero-photo">
-      <img src="images/abuotme.jpeg" alt="מיכל — מעצבת שיער" />
+      <img id="heroPhoto" src="images/abuotme.jpeg" alt="מיכל — מעצבת שיער" />
     </div>
-    <h1>Michal Haimov</h1>
-    <div class="role">מעצבת שיער</div>
-    <p class="tagline">עיצוב שיער מוקפד לרגעים הכי מיוחדים — מגיעה אלייך למקום האירוע.</p>
-    <div class="hero-tags">
+    <h1 id="heroTitle">Michal Haimov</h1>
+    <div class="role" id="heroRole">מעצבת שיער</div>
+    <p class="tagline" id="heroTagline">עיצוב שיער מוקפד לרגעים הכי מיוחדים — מגיעה אלייך למקום האירוע.</p>
+    <div class="hero-tags" id="heroTags">
       <span>כלות</span><span>ערב</span><span>אופנה</span><span>אזור המרכז</span>
     </div>
     <div class="hero-cta">
@@ -372,12 +372,12 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="wrap about-grid reveal">
-      <div class="about-photo"><img src="%D7%A6%D7%99%D7%9C%D7%95%D7%9D%20%D7%9E%D7%A1%D7%9A%202026-07-02%20%D7%91-21.24.32.png" alt="מיכל — מעצבת שיער בעבודה" /></div>
+      <div class="about-photo"><img id="aboutPhoto" src="%D7%A6%D7%99%D7%9C%D7%95%D7%9D%20%D7%9E%D7%A1%D7%9A%202026-07-02%20%D7%91-21.24.32.png" alt="מיכל — מעצבת שיער בעבודה" /></div>
       <div class="about-text">
-        <div class="eyebrow">קצת עליי</div>
-        <p class="lead">היי, אני מיכל — מעצבת שיער לכלות, אירועי ערב ואופנה.</p>
-        <p>אני מאמינה שעיצוב שיער הוא הרבה מעבר לתסרוקת: זו הדרך להרגיש הכי יפה שיש ביום הכי חשוב. אני מגיעה אלייך עד למקום האירוע, מקשיבה בדיוק לרצון שלך, ומעצבת מראה מדויק שמחזיק לאורך כל הערב.</p>
-        <div class="about-stats">
+        <div class="eyebrow" id="aboutEyebrow">קצת עליי</div>
+        <p class="lead" id="aboutLead">היי, אני מיכל — מעצבת שיער לכלות, אירועי ערב ואופנה.</p>
+        <p id="aboutText">אני מאמינה שעיצוב שיער הוא הרבה מעבר לתסרוקת: זו הדרך להרגיש הכי יפה שיש ביום הכי חשוב. אני מגיעה אלייך עד למקום האירוע, מקשיבה בדיוק לרצון שלך, ומעצבת מראה מדויק שמחזיק לאורך כל הערב.</p>
+        <div class="about-stats" id="aboutStats">
           <div class="stat"><b>100%</b><small>עבודה אישית ומוקפדת</small></div>
           <div class="stat"><b>מגיעה</b><small>עד למקום האירוע</small></div>
           <div class="stat"><b>מרכז</b><small>אזור השירות</small></div>
@@ -390,9 +390,9 @@
   <section class="services">
     <div class="wrap">
       <div class="reveal" style="text-align:center">
-        <div class="eyebrow">השירותים שלי</div>
-        <h2 class="section-title">מה מתאים לך?</h2>
-        <p class="section-sub">כל מראה נבנה בהתאמה אישית, לך ולאירוע שלך.</p>
+        <div class="eyebrow" id="svcEyebrow">השירותים שלי</div>
+        <h2 class="section-title" id="svcTitle">מה מתאים לך?</h2>
+        <p class="section-sub" id="svcSub">כל מראה נבנה בהתאמה אישית, לך ולאירוע שלך.</p>
       </div>
       <div class="service-cards">
         <div class="service-card reveal">
@@ -424,9 +424,9 @@
   <section id="portfolio">
     <div class="wrap">
       <div class="reveal" style="text-align:center">
-        <div class="eyebrow">תיק עבודות</div>
-        <h2 class="section-title">גלריית עבודות</h2>
-        <p class="section-sub">רגעים אמיתיים מהכיסא שלי.</p>
+        <div class="eyebrow" id="pfEyebrow">תיק עבודות</div>
+        <h2 class="section-title" id="pfTitle">גלריית עבודות</h2>
+        <p class="section-sub" id="pfSub">רגעים אמיתיים מהכיסא שלי.</p>
       </div>
       <div class="gallery-viewport reveal">
         <div class="gallery-track" id="galleryTrack"></div>
@@ -447,9 +447,9 @@
   <section class="reviews" id="reviews">
     <div class="wrap">
       <div class="reveal" style="text-align:center">
-        <div class="eyebrow">מה אומרות עליי</div>
-        <h2 class="section-title">לקוחות מספרות</h2>
-        <p class="section-sub">ביקורות אמיתיות ישר מהוואטסאפ 💗</p>
+        <div class="eyebrow" id="rvEyebrow">מה אומרות עליי</div>
+        <h2 class="section-title" id="rvTitle">לקוחות מספרות</h2>
+        <p class="section-sub" id="rvSub">ביקורות אמיתיות ישר מהוואטסאפ 💗</p>
       </div>
       <div class="rev-viewport reveal">
         <div class="rev-track" id="revTrack"></div>
@@ -474,8 +474,8 @@
         <h2 class="section-title">בואי נדבר</h2>
       </div>
       <div class="contact-card reveal">
-        <h2>מתלבטת לגבי המראה שלך?</h2>
-        <p>שלחי לי הודעה בוואטסאפ ונתאם יחד את עיצוב השיער המושלם לאירוע שלך.</p>
+        <h2 id="contactTitle">מתלבטת לגבי המראה שלך?</h2>
+        <p id="contactText">שלחי לי הודעה בוואטסאפ ונתאם יחד את עיצוב השיער המושלם לאירוע שלך.</p>
         <div class="contact-actions">
           <a class="btn btn-wa" id="contact-wa" href="#" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.44 9.9-9.9a9.86 9.86 0 0 0-2.9-7A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.81.83-3.03-.2-.31a8.22 8.22 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.69 8.24-8.24 8.24Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
@@ -489,7 +489,7 @@
         <div class="contact-meta">
           <span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-            מגיעה עד למקום האירוע · אזור המרכז
+            <span id="contactLocation">מגיעה עד למקום האירוע · אזור המרכז</span>
           </span>
         </div>
       </div>
@@ -498,7 +498,7 @@
 
   <!-- FOOTER -->
   <footer id="footer">
-    <div class="brand">Michal Haimov<span style="color:var(--accent)">.</span></div>
+    <div class="brand"><span id="brandFooter">Michal Haimov</span><span style="color:var(--accent)">.</span></div>
     <div class="footer-social">
       <a id="footer-ig" href="#" target="_blank" rel="noopener" aria-label="אינסטגרם">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
@@ -507,7 +507,7 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.44 9.9-9.9a9.86 9.86 0 0 0-2.9-7A9.83 9.83 0 0 0 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
       </a>
     </div>
-    <p>© <span id="year"></span> Michal Haimov · מעצבת שיער · כל הזכויות שמורות</p>
+    <p>© <span id="year"></span> <span id="copyBrand">Michal Haimov</span> · <span id="copyRole">מעצבת שיער</span> · כל הזכויות שמורות</p>
   </footer>
 
   <!-- FLOATING WHATSAPP -->
@@ -522,43 +522,35 @@
   </div>
 
   <script>
-    /* ============ CONFIG ============ */
-    var WHATSAPP = '972537202078';
-    var WA_TEXT  = encodeURIComponent('היי מיכל! ראיתי את האתר שלך ואשמח לתאם עיצוב שיער 💗');
-    var WA_URL   = 'https://wa.me/' + WHATSAPP + '?text=' + WA_TEXT;
-    var IG_URL   = 'https://instagram.com/michal_hairstyles';
-
-    /* Raw asset paths — encoded at runtime with encodeURI (handles Hebrew + spaces) */
-    var PORTFOLIO = [
-      'images/צילום מסך 2026-07-02 ב-20.37.53.png',
-      'images/צילום מסך 2026-07-02 ב-20.38.17.png',
-      'images/צילום מסך 2026-07-02 ב-20.38.27.png',
-      'images/צילום מסך 2026-07-02 ב-20.38.39.png',
-      'images/צילום מסך 2026-07-02 ב-20.39.04.png',
-      'images/צילום מסך 2026-07-02 ב-20.39.15.png',
-      'images/צילום מסך 2026-07-02 ב-20.39.29.png',
-      'images/WhatsApp Image 2026-07-02 at 22.39.23.jpeg',
-      'images/WhatsApp Image 2026-07-02 at 22.41.02.jpeg',
-      'images/WhatsApp Image 2026-07-02 at 22.41.03.jpeg',
-      'images/WhatsApp Image 2026-07-02 at 22.41.03 (1).jpeg',
-      'images/WhatsApp Image 2026-07-02 at 22.41.03 (2).jpeg'
-    ];
-
-    var REVIEWS = [
-      { quote: 'אמאלהההה איזה מטורף! השיער החזיק, באמת אין כמוך. את מדהימה והיחס מושלם — יצאתי הכי מרוצה בעולם.', author: 'שיראל', img: 'reviwes/WhatsApp Image 2026-07-02 at 20.45.36.jpeg' },
-      { quote: 'מיכלי אהובתי! חייבת להגיד שהמחמאות על הקוקו פשוט לא הפסיקו!!! אין עלייך יא אלופה. מעכשיו את איתי לכל אירוע.', author: 'לקוחה מאושרת', img: 'reviwes/WhatsApp Image 2026-07-02 at 20.47.08.jpeg' },
-      { quote: 'מיכלי עשית אותי מעלפת, אין עלייך ועל הידיים שלך. כמה פרגון ותגובות טובות קיבלתי!', author: 'דיאנה יונוסוב', img: 'reviwes/WhatsApp Image 2026-07-02 at 20.48.04.jpeg' },
-      { quote: 'תקשיבי… השיער פשוט לא זז לבנות! מדהים.', author: 'לקוחה מרוצה', img: 'reviwes/WhatsApp Image 2026-07-02 at 20.50.05.jpeg' },
-      { quote: 'מושלמת שלי, את! איזה ידייםםם, איזה שיער מטורף יצא!!!', author: 'כלה מאושרת', img: 'reviwes/WhatsApp Image 2026-07-02 at 20.50.07.jpeg' },
-      { quote: 'חיים שלי את! לא יודעת כמה החמיאו לי היום על השיער! אין עוד אחת בעולםםם, איזה מזל שיש לי אותך. תודה 🤗', author: 'לקוחה נרגשת', img: 'reviwes/WhatsApp Image 2026-07-02 at 21.01.51.jpeg' }
-    ];
+    /* ============ DEFAULTS ============
+       fallback בלבד — התוכן האמיתי נטען מ-content/site.json (נערך דרך /admin) */
+    var DEFAULTS = {
+      contact: {
+        whatsapp: '972537202078',
+        waMessage: 'היי מיכל! ראיתי את האתר שלך ואשמח לתאם עיצוב שיער 💗',
+        instagram: 'https://instagram.com/michal_hairstyles'
+      },
+      portfolio: {
+        images: [
+          'images/צילום מסך 2026-07-02 ב-20.37.53.png',
+          'images/צילום מסך 2026-07-02 ב-20.38.17.png',
+          'images/צילום מסך 2026-07-02 ב-20.38.27.png',
+          'images/צילום מסך 2026-07-02 ב-20.38.39.png',
+          'images/צילום מסך 2026-07-02 ב-20.39.04.png',
+          'images/צילום מסך 2026-07-02 ב-20.39.15.png',
+          'images/צילום מסך 2026-07-02 ב-20.39.29.png'
+        ]
+      },
+      reviews: {
+        items: [
+          { quote: 'אמאלהההה איזה מטורף! השיער החזיק, באמת אין כמוך. את מדהימה והיחס מושלם — יצאתי הכי מרוצה בעולם.', author: 'שיראל', img: 'reviwes/WhatsApp Image 2026-07-02 at 20.45.36.jpeg' }
+        ]
+      }
+    };
 
     var enc = function (p) { return encodeURI(p); };
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* ============ WIRE LINKS ============ */
-    ['hero-wa','contact-wa','footer-wa','fab-wa'].forEach(function(id){ document.getElementById(id).href = WA_URL; });
-    ['hero-ig','contact-ig','footer-ig'].forEach(function(id){ document.getElementById(id).href = IG_URL; });
     document.getElementById('year').textContent = new Date().getFullYear();
 
     /* ============ THEME TOGGLE ============ */
@@ -586,83 +578,160 @@
       header.classList.toggle('scrolled', window.scrollY > 30);
     }, { passive: true });
 
-    /* ============ PORTFOLIO GALLERY ============ */
-    var galTrack = document.getElementById('galleryTrack');
-    var galDots = document.getElementById('galDots');
-    var galIndex = 0;
-
-    PORTFOLIO.forEach(function(src, i){
-      var slide = document.createElement('div'); slide.className = 'g-slide';
-      var card = document.createElement('div'); card.className = 'g-card';
-      var img = document.createElement('img'); img.src = enc(src); img.alt = 'עבודת שיער של Michal Haimov'; img.loading = 'lazy';
-      card.appendChild(img); slide.appendChild(card); galTrack.appendChild(slide);
-
-      var dot = document.createElement('button'); dot.className = 'g-dot' + (i === 0 ? ' active' : ''); dot.setAttribute('aria-label', 'תמונה ' + (i + 1));
-      dot.addEventListener('click', function(){ galGoTo(i); });
-      galDots.appendChild(dot);
-    });
-
-    function galRender(){
-      galTrack.style.transform = 'translateX(' + (galIndex * 100) + '%)';
-      galDots.querySelectorAll('.g-dot').forEach(function(d, i){ d.classList.toggle('active', i === galIndex); });
+    /* ============ CONTENT (מ-content/site.json) ============ */
+    function setText(id, v){
+      if (typeof v !== 'string' || !v) return;
+      var el = document.getElementById(id);
+      if (el) el.textContent = v;
     }
-    function galGoTo(i){ galIndex = (i + PORTFOLIO.length) % PORTFOLIO.length; galRender(); }
-    function galNext(){ galGoTo(galIndex + 1); }
-    function galPrev(){ galGoTo(galIndex - 1); }
-    document.getElementById('galNext').addEventListener('click', galNext);
-    document.getElementById('galPrev').addEventListener('click', galPrev);
-
-    // swipe
-    var gvp = document.querySelector('.gallery-viewport'); var gsx = 0, gdx = 0;
-    gvp.addEventListener('touchstart', function(e){ gsx = e.touches[0].clientX; gdx = 0; }, { passive: true });
-    gvp.addEventListener('touchmove', function(e){ gdx = e.touches[0].clientX - gsx; }, { passive: true });
-    gvp.addEventListener('touchend', function(){
-      if (Math.abs(gdx) > 45){ if (gdx < 0) galNext(); else galPrev(); }
-    });
-
-    /* ============ REVIEWS SLIDER ============ */
-    var revTrack = document.getElementById('revTrack');
-    var revDots = document.getElementById('revDots');
-    var revIndex = 0, revTimer = null;
-
-    REVIEWS.forEach(function(r, i){
-      var slide = document.createElement('div'); slide.className = 'rev-slide';
-      var card = document.createElement('div'); card.className = 'rev-card';
-      card.innerHTML =
-        '<div class="rev-stars">★★★★★</div>' +
-        '<p class="rev-quote">' + r.quote + '</p>' +
-        '<div class="rev-author">— ' + r.author + '</div>' +
-        '<button class="rev-proof" data-src="' + enc(r.img) + '">' +
-          '<img src="' + enc(r.img) + '" alt="צילום מסך ביקורת" loading="lazy" />' +
-          'צפייה בצילום המקורי' +
-        '</button>';
-      slide.appendChild(card); revTrack.appendChild(slide);
-
-      var dot = document.createElement('button'); dot.className = 'rev-dot' + (i===0?' active':''); dot.setAttribute('aria-label','ביקורת ' + (i+1));
-      dot.addEventListener('click', function(){ goTo(i); });
-      revDots.appendChild(dot);
-    });
-
-    function render(){
-      revTrack.style.transform = 'translateX(' + (revIndex * 100) + '%)';
-      revDots.querySelectorAll('.rev-dot').forEach(function(d,i){ d.classList.toggle('active', i===revIndex); });
+    function setPhoto(id, v){
+      if (typeof v !== 'string' || !v) return;
+      var el = document.getElementById(id);
+      if (el) el.src = enc(v);
     }
-    function goTo(i){ revIndex = (i + REVIEWS.length) % REVIEWS.length; render(); restart(); }
-    function next(){ goTo(revIndex + 1); }
-    function prev(){ goTo(revIndex - 1); }
-    document.getElementById('revNext').addEventListener('click', next);
-    document.getElementById('revPrev').addEventListener('click', prev);
 
-    function restart(){ if(revTimer) clearInterval(revTimer); if(!reduceMotion) revTimer = setInterval(next, 5200); }
-    restart();
+    function initContent(cfg){
+      cfg = cfg || {};
+      var hero = cfg.hero || {}, about = cfg.about || {}, services = cfg.services || {};
+      var portfolio = cfg.portfolio || DEFAULTS.portfolio, reviews = cfg.reviews || DEFAULTS.reviews;
+      var contact = cfg.contact || DEFAULTS.contact;
 
-    // swipe reviews
-    var rvp = document.querySelector('.rev-viewport'); var rsx = 0, rdx = 0;
-    rvp.addEventListener('touchstart', function(e){ rsx = e.touches[0].clientX; rdx = 0; if(revTimer) clearInterval(revTimer); }, { passive: true });
-    rvp.addEventListener('touchmove', function(e){ rdx = e.touches[0].clientX - rsx; }, { passive: true });
-    rvp.addEventListener('touchend', function(){
-      if (Math.abs(rdx) > 45){ if (rdx < 0) next(); else prev(); } else { restart(); }
-    });
+      /* --- קישורים --- */
+      var waNumber = contact.whatsapp || DEFAULTS.contact.whatsapp;
+      var waMessage = contact.waMessage || DEFAULTS.contact.waMessage;
+      var waUrl = 'https://wa.me/' + waNumber.replace(/\D/g, '') + '?text=' + encodeURIComponent(waMessage);
+      var igUrl = contact.instagram || DEFAULTS.contact.instagram;
+      ['hero-wa','contact-wa','footer-wa','fab-wa'].forEach(function(id){ document.getElementById(id).href = waUrl; });
+      ['hero-ig','contact-ig','footer-ig'].forEach(function(id){ document.getElementById(id).href = igUrl; });
+
+      /* --- טקסטים --- */
+      setText('brandHeader', cfg.brand); setText('brandFooter', cfg.brand); setText('copyBrand', cfg.brand);
+      setText('heroTitle', hero.title); setText('heroRole', hero.role); setText('copyRole', hero.role);
+      setText('heroTagline', hero.tagline);
+      setPhoto('heroPhoto', hero.photo);
+      if (Array.isArray(hero.tags) && hero.tags.length){
+        var tagsEl = document.getElementById('heroTags');
+        tagsEl.innerHTML = '';
+        hero.tags.forEach(function(t){
+          var s = document.createElement('span'); s.textContent = t; tagsEl.appendChild(s);
+        });
+      }
+      setText('aboutEyebrow', about.eyebrow); setText('aboutLead', about.lead); setText('aboutText', about.text);
+      setPhoto('aboutPhoto', about.photo);
+      if (Array.isArray(about.stats) && about.stats.length){
+        var statsEl = document.getElementById('aboutStats');
+        statsEl.innerHTML = '';
+        about.stats.forEach(function(st){
+          var d = document.createElement('div'); d.className = 'stat';
+          var b = document.createElement('b'); b.textContent = st.value || '';
+          var sm = document.createElement('small'); sm.textContent = st.label || '';
+          d.appendChild(b); d.appendChild(sm); statsEl.appendChild(d);
+        });
+      }
+      setText('svcEyebrow', services.eyebrow); setText('svcTitle', services.title); setText('svcSub', services.sub);
+      if (Array.isArray(services.items)){
+        document.querySelectorAll('.service-card').forEach(function(card, i){
+          var item = services.items[i];
+          if (!item) return;
+          var h = card.querySelector('h3'), p = card.querySelector('p');
+          if (h && item.title) h.textContent = item.title;
+          if (p && item.text) p.textContent = item.text;
+        });
+      }
+      setText('pfEyebrow', portfolio.eyebrow); setText('pfTitle', portfolio.title); setText('pfSub', portfolio.sub);
+      setText('rvEyebrow', reviews.eyebrow); setText('rvTitle', reviews.title); setText('rvSub', reviews.sub);
+      setText('contactTitle', contact.title); setText('contactText', contact.text); setText('contactLocation', contact.location);
+
+      /* --- גלריית תיק עבודות --- */
+      var GALLERY = Array.isArray(portfolio.images) && portfolio.images.length ? portfolio.images : DEFAULTS.portfolio.images;
+      var galTrack = document.getElementById('galleryTrack');
+      var galDots = document.getElementById('galDots');
+      var galIndex = 0;
+
+      GALLERY.forEach(function(src, i){
+        var slide = document.createElement('div'); slide.className = 'g-slide';
+        var card = document.createElement('div'); card.className = 'g-card';
+        var img = document.createElement('img'); img.src = enc(src); img.alt = 'עבודת שיער של Michal Haimov'; img.loading = 'lazy';
+        card.appendChild(img); slide.appendChild(card); galTrack.appendChild(slide);
+
+        var dot = document.createElement('button'); dot.className = 'g-dot' + (i === 0 ? ' active' : ''); dot.setAttribute('aria-label', 'תמונה ' + (i + 1));
+        dot.addEventListener('click', function(){ galGoTo(i); });
+        galDots.appendChild(dot);
+      });
+
+      function galRender(){
+        galTrack.style.transform = 'translateX(' + (galIndex * 100) + '%)';
+        galDots.querySelectorAll('.g-dot').forEach(function(d, i){ d.classList.toggle('active', i === galIndex); });
+      }
+      function galGoTo(i){ galIndex = (i + GALLERY.length) % GALLERY.length; galRender(); }
+      function galNext(){ galGoTo(galIndex + 1); }
+      function galPrev(){ galGoTo(galIndex - 1); }
+      document.getElementById('galNext').addEventListener('click', galNext);
+      document.getElementById('galPrev').addEventListener('click', galPrev);
+
+      // swipe
+      var gvp = document.querySelector('.gallery-viewport'); var gsx = 0, gdx = 0;
+      gvp.addEventListener('touchstart', function(e){ gsx = e.touches[0].clientX; gdx = 0; }, { passive: true });
+      gvp.addEventListener('touchmove', function(e){ gdx = e.touches[0].clientX - gsx; }, { passive: true });
+      gvp.addEventListener('touchend', function(){
+        if (Math.abs(gdx) > 45){ if (gdx < 0) galNext(); else galPrev(); }
+      });
+
+      /* --- ביקורות --- */
+      var REVIEWS = Array.isArray(reviews.items) && reviews.items.length ? reviews.items : DEFAULTS.reviews.items;
+      var revTrack = document.getElementById('revTrack');
+      var revDots = document.getElementById('revDots');
+      var revIndex = 0, revTimer = null;
+
+      REVIEWS.forEach(function(r, i){
+        var slide = document.createElement('div'); slide.className = 'rev-slide';
+        var card = document.createElement('div'); card.className = 'rev-card';
+
+        var stars = document.createElement('div'); stars.className = 'rev-stars'; stars.textContent = '★★★★★';
+        var quote = document.createElement('p'); quote.className = 'rev-quote'; quote.textContent = r.quote || '';
+        var author = document.createElement('div'); author.className = 'rev-author'; author.textContent = '— ' + (r.author || '');
+        card.appendChild(stars); card.appendChild(quote); card.appendChild(author);
+
+        if (r.img){
+          var proof = document.createElement('button'); proof.className = 'rev-proof'; proof.setAttribute('data-src', enc(r.img));
+          var pimg = document.createElement('img'); pimg.src = enc(r.img); pimg.alt = 'צילום מסך ביקורת'; pimg.loading = 'lazy';
+          proof.appendChild(pimg); proof.appendChild(document.createTextNode('צפייה בצילום המקורי'));
+          card.appendChild(proof);
+        }
+        slide.appendChild(card); revTrack.appendChild(slide);
+
+        var dot = document.createElement('button'); dot.className = 'rev-dot' + (i===0?' active':''); dot.setAttribute('aria-label','ביקורת ' + (i+1));
+        dot.addEventListener('click', function(){ goTo(i); });
+        revDots.appendChild(dot);
+      });
+
+      function render(){
+        revTrack.style.transform = 'translateX(' + (revIndex * 100) + '%)';
+        revDots.querySelectorAll('.rev-dot').forEach(function(d,i){ d.classList.toggle('active', i===revIndex); });
+      }
+      function goTo(i){ revIndex = (i + REVIEWS.length) % REVIEWS.length; render(); restart(); }
+      function next(){ goTo(revIndex + 1); }
+      function prev(){ goTo(revIndex - 1); }
+      document.getElementById('revNext').addEventListener('click', next);
+      document.getElementById('revPrev').addEventListener('click', prev);
+
+      function restart(){ if(revTimer) clearInterval(revTimer); if(!reduceMotion) revTimer = setInterval(next, 5200); }
+      restart();
+
+      // swipe reviews
+      var rvp = document.querySelector('.rev-viewport'); var rsx = 0, rdx = 0;
+      rvp.addEventListener('touchstart', function(e){ rsx = e.touches[0].clientX; rdx = 0; if(revTimer) clearInterval(revTimer); }, { passive: true });
+      rvp.addEventListener('touchmove', function(e){ rdx = e.touches[0].clientX - rsx; }, { passive: true });
+      rvp.addEventListener('touchend', function(){
+        if (Math.abs(rdx) > 45){ if (rdx < 0) next(); else prev(); } else { restart(); }
+      });
+    }
+
+    /* ============ BOOTSTRAP ============ */
+    fetch('content/site.json', { cache: 'no-cache' })
+      .then(function(r){ if (!r.ok) throw new Error('no content'); return r.json(); })
+      .then(initContent)
+      .catch(function(){ initContent(null); });
 
     /* ============ LIGHTBOX ============ */
     var lb = document.getElementById('lightbox');
