@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#FBF4EF" />
+  <title>Michal Haimov · מעצבת שיער</title>
+  <meta name="description" content="Michal Haimov — מעצבת שיער לכלות, ערב ואופנה. מגיעה למקום האירוע, אזור המרכז. תיאום בוואטסאפ." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Michal Haimov · מעצבת שיער" />
+  <meta property="og:description" content="עיצוב שיער לכלות, ערב ואופנה — מגיעה למקום האירוע." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===================== THEMES ===================== */
+    :root,
+    body[data-theme="blush"] {
+      --bg:        #FBF4EF;
+      --bg-soft:   #F7E9E6;
+      --surface:   #FFFFFF;
+      --primary:   #E3A9AC;
+      --primary-2: #F3D9DA;
+      --accent:    #C98B8E;
+      --accent-dk: #A96B6E;
+      --text:      #4A3B38;
+      --text-soft: #8A736E;
+      --line:      #EFE0DB;
+      --shadow:    24px 24px 60px rgba(180,140,135,.18);
+      --hero-1:    #FBEDE9;
+      --hero-2:    #F3D9DA;
+      --hero-3:    #EBC7C9;
+      --wa:        #25D366;
+    }
+    body[data-theme="lavender"] {
+      --bg:        #F6F2FA;
+      --bg-soft:   #EEE6F3;
+      --surface:   #FFFFFF;
+      --primary:   #C7ADDD;
+      --primary-2: #E4D6EF;
+      --accent:    #A98BC0;
+      --accent-dk: #8B6BA6;
+      --text:      #423A4C;
+      --text-soft: #7C7089;
+      --line:      #E6DCEE;
+      --shadow:    24px 24px 60px rgba(150,125,175,.18);
+      --hero-1:    #F1E9F7;
+      --hero-2:    #E4D6EF;
+      --hero-3:    #D5C2E6;
+    }
+
+    /* ===================== BASE ===================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Assistant', 'Heebo', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      transition: background .6s ease, color .6s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--primary); color: #fff; }
+
+    .wrap { width: 100%; max-width: 720px; margin-inline: auto; padding-inline: 22px; }
+
+    .serif { font-family: 'Cormorant Garamond', serif; }
+
+    .eyebrow {
+      font-size: .8rem; letter-spacing: .32em; text-transform: uppercase;
+      color: var(--accent); font-weight: 600; margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Heebo', sans-serif; font-weight: 700;
+      font-size: clamp(1.7rem, 7vw, 2.4rem); line-height: 1.2; color: var(--text);
+    }
+    .section-sub { color: var(--text-soft); margin-top: 12px; font-size: 1.02rem; }
+
+    section { position: relative; padding: 74px 0; }
+
+    /* ===================== HEADER ===================== */
+    header {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 22px;
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--bg) 72%, transparent);
+      border-bottom: 1px solid transparent;
+      transition: border-color .4s ease, background .4s ease, padding .4s ease;
+    }
+    header.scrolled { border-color: var(--line); padding-block: 10px; }
+    .brand { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.05rem, 4.6vw, 1.6rem); font-weight: 600; letter-spacing: .02em; color: var(--text); white-space: nowrap; }
+    .brand span { color: var(--accent); }
+
+    /* theme toggle */
+    .theme-toggle {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 100px; padding: 5px; cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,.05);
+    }
+    .swatch {
+      width: 24px; height: 24px; border-radius: 50%; border: 2px solid transparent;
+      transition: transform .3s ease, border-color .3s ease; cursor: pointer;
+    }
+    .swatch.blush   { background: linear-gradient(135deg, #F3D9DA, #E3A9AC); }
+    .swatch.lavender{ background: linear-gradient(135deg, #E4D6EF, #C7ADDD); }
+    .swatch.active  { border-color: var(--accent); transform: scale(1.12); }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      min-height: 100svh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 120px 22px 60px; position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(120% 90% at 80% 0%, var(--hero-3) 0%, transparent 55%),
+        radial-gradient(120% 90% at 0% 100%, var(--hero-2) 0%, transparent 55%),
+        linear-gradient(160deg, var(--hero-1), var(--bg));
+      background-size: 200% 200%;
+      animation: drift 22s ease-in-out infinite;
+    }
+    @keyframes drift {
+      0%,100% { background-position: 0% 0%, 100% 100%, 0% 0%; }
+      50%     { background-position: 20% 15%, 80% 85%, 100% 100%; }
+    }
+    .hero-photo {
+      position: relative; z-index: 1;
+      width: 190px; height: 240px; border-radius: 140px 140px 130px 130px;
+      overflow: hidden; box-shadow: var(--shadow);
+      border: 6px solid var(--surface); margin-bottom: 30px;
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+    .hero h1 {
+      position: relative; z-index: 1;
+      font-family: 'Cormorant Garamond', serif; font-weight: 600;
+      font-size: clamp(2.3rem, 11.5vw, 4.4rem); line-height: 1.05; letter-spacing: .01em; color: var(--text);
+    }
+    .hero .role {
+      position: relative; z-index: 1; margin-top: 6px;
+      font-family: 'Heebo', sans-serif; font-weight: 500; font-size: clamp(1.15rem,5vw,1.5rem);
+      letter-spacing: .5em; padding-inline-start: .5em; color: var(--accent);
+    }
+    .hero .tagline {
+      position: relative; z-index: 1; margin-top: 20px; max-width: min(380px, 88vw);
+      color: var(--text-soft); font-size: 1.05rem;
+    }
+    .hero-tags {
+      position: relative; z-index: 1; margin-top: 18px; max-width: 90vw; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+    }
+    .hero-tags span {
+      font-size: .82rem; padding: 6px 14px; border-radius: 100px;
+      background: color-mix(in srgb, var(--surface) 70%, transparent); border: 1px solid var(--line); color: var(--text-soft);
+    }
+    .hero-cta { position: relative; z-index: 1; margin-top: 30px; max-width: 90vw; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+    /* buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px; justify-content: center;
+      font-family: 'Heebo', sans-serif; font-weight: 500; font-size: 1rem;
+      padding: 14px 26px; border-radius: 100px; cursor: pointer; border: none;
+      transition: transform .25s ease, box-shadow .25s ease, background .3s ease; white-space: nowrap;
+    }
+    .btn svg { width: 20px; height: 20px; }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 40%, transparent); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 34px color-mix(in srgb, var(--accent) 48%, transparent); }
+    .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--line); }
+    .btn-ghost:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(0,0,0,.07); }
+    .btn-wa { background: var(--wa); color: #fff; box-shadow: 0 12px 26px rgba(37,211,102,.34); }
+    .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 18px 34px rgba(37,211,102,.42); }
+
+    .scroll-hint { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 1; color: var(--accent); opacity: .8; animation: bob 2.2s ease-in-out infinite; }
+    @keyframes bob { 0%,100% { transform: translate(-50%,0);} 50% { transform: translate(-50%,8px);} }
+
+    /* ===================== ABOUT ===================== */
+    .about-grid { display: flex; flex-direction: column; gap: 28px; align-items: center; }
+    .about-photo {
+      width: 100%; max-width: 340px; aspect-ratio: 4/5; border-radius: 30px; overflow: hidden;
+      box-shadow: var(--shadow); border: 6px solid var(--surface);
+    }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+    .about-text p { color: var(--text-soft); margin-top: 14px; }
+    .about-text .lead { color: var(--text); font-size: 1.12rem; font-weight: 500; }
+    .about-stats { display: flex; gap: 26px; margin-top: 24px; flex-wrap: wrap; }
+    .about-stats .stat b { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--accent); display: block; line-height: 1; }
+    .about-stats .stat small { color: var(--text-soft); font-size: .9rem; }
+
+    /* ===================== SERVICES ===================== */
+    .services { background: var(--bg-soft); transition: background .6s ease; }
+    .service-cards { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 34px; }
+    .service-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 24px;
+      padding: 28px 24px; text-align: center; transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .service-icon {
+      width: 62px; height: 62px; margin: 0 auto 16px; border-radius: 50%;
+      display: grid; place-items: center; color: var(--accent);
+      background: color-mix(in srgb, var(--primary) 26%, var(--surface));
+    }
+    .service-icon svg { width: 30px; height: 30px; }
+    .service-card h3 { font-family: 'Heebo', sans-serif; font-size: 1.25rem; margin-bottom: 8px; }
+    .service-card p { color: var(--text-soft); font-size: .96rem; }
+
+    /* ===================== PORTFOLIO GALLERY ===================== */
+    .gallery-viewport { margin-top: 36px; overflow: hidden; }
+    .gallery-track { display: flex; transition: transform .55s cubic-bezier(.6,.05,.25,1); }
+    .g-slide { flex: 0 0 100%; padding: 6px; display: flex; justify-content: center; }
+    .g-card {
+      width: min(100%, 360px); aspect-ratio: 3/4; border-radius: 26px; overflow: hidden;
+      box-shadow: var(--shadow); border: 6px solid var(--surface); background: var(--primary-2);
+    }
+    .g-card img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 24px; }
+    .gallery-dots { display: flex; gap: 8px; }
+    .g-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--primary-2); cursor: pointer; transition: all .3s ease; border: none; }
+    .g-dot.active { background: var(--accent); width: 26px; border-radius: 100px; }
+
+    /* ===================== REVIEWS ===================== */
+    .reviews { background: var(--bg-soft); transition: background .6s ease; }
+    .rev-viewport { margin-top: 34px; overflow: hidden; }
+    .rev-track { display: flex; transition: transform .6s cubic-bezier(.6,.05,.25,1); }
+    .rev-slide { flex: 0 0 100%; padding: 6px; }
+    .rev-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 26px;
+      padding: 30px 26px; box-shadow: var(--shadow); text-align: center;
+      display: flex; flex-direction: column; align-items: center; min-height: 320px; justify-content: center;
+    }
+    .rev-stars { color: #F5B301; letter-spacing: 3px; font-size: 1.05rem; margin-bottom: 14px; }
+    .rev-quote { font-size: 1.12rem; color: var(--text); line-height: 1.75; font-weight: 500; }
+    .rev-quote::before { content: "\201D"; font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--primary); line-height: 0; display: block; margin-bottom: 6px; }
+    .rev-author { margin-top: 18px; color: var(--accent); font-weight: 600; }
+    .rev-proof {
+      margin-top: 16px; display: inline-flex; align-items: center; gap: 7px;
+      font-size: .82rem; color: var(--text-soft); background: var(--bg-soft);
+      border: 1px solid var(--line); border-radius: 100px; padding: 7px 14px; cursor: pointer; transition: transform .2s ease;
+    }
+    .rev-proof:hover { transform: translateY(-2px); }
+    .rev-proof img { width: 26px; height: 26px; border-radius: 6px; object-fit: cover; }
+
+    .rev-nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 24px; }
+    .rev-arrow {
+      width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface);
+      display: grid; place-items: center; cursor: pointer; color: var(--accent); transition: transform .2s ease, background .3s ease;
+    }
+    .rev-arrow:hover { transform: scale(1.08); background: var(--primary-2); }
+    .rev-arrow svg { width: 20px; height: 20px; }
+    .rev-dots { display: flex; gap: 8px; }
+    .rev-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--primary-2); cursor: pointer; transition: all .3s ease; }
+    .rev-dot.active { background: var(--accent); width: 26px; border-radius: 100px; }
+
+    /* ===================== CONTACT ===================== */
+    .contact-card {
+      margin-top: 34px; background: linear-gradient(160deg, var(--hero-1), var(--primary-2));
+      border-radius: 30px; padding: 44px 26px; text-align: center; border: 1px solid var(--line);
+      box-shadow: var(--shadow); position: relative; overflow: hidden;
+    }
+    .contact-card h2 { font-family: 'Heebo', sans-serif; font-size: clamp(1.5rem,6vw,2rem); }
+    .contact-card p { color: var(--text-soft); margin-top: 10px; }
+    .contact-actions { margin-top: 26px; display: flex; flex-direction: column; gap: 12px; align-items: stretch; }
+    .contact-actions .btn { width: 100%; }
+    .contact-meta { margin-top: 22px; color: var(--text-soft); font-size: .9rem; display: flex; flex-direction: column; gap: 6px; }
+    .contact-meta span { display: inline-flex; align-items: center; gap: 8px; justify-content: center; }
+    .contact-meta svg { width: 16px; height: 16px; color: var(--accent); }
+
+    /* ===================== FOOTER ===================== */
+    footer { text-align: center; padding: 34px 22px 110px; color: var(--text-soft); font-size: .85rem; }
+    footer .brand { font-size: 1.3rem; margin-bottom: 8px; }
+    .footer-social { display: flex; gap: 14px; justify-content: center; margin: 14px 0; }
+    .footer-social a {
+      width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--surface); border: 1px solid var(--line); color: var(--accent); transition: transform .2s ease;
+    }
+    .footer-social a:hover { transform: translateY(-3px); }
+    .footer-social svg { width: 22px; height: 22px; }
+
+    /* ===================== FLOATING WHATSAPP ===================== */
+    .fab {
+      position: fixed; bottom: 20px; left: 20px; z-index: 60;
+      width: 60px; height: 60px; border-radius: 50%; background: var(--wa); color: #fff;
+      display: grid; place-items: center; box-shadow: 0 12px 30px rgba(37,211,102,.45);
+      transition: transform .25s ease; animation: fabpulse 2.6s ease-in-out infinite;
+    }
+    .fab:hover { transform: scale(1.08); }
+    .fab svg { width: 32px; height: 32px; }
+    @keyframes fabpulse {
+      0%,100% { box-shadow: 0 12px 30px rgba(37,211,102,.45), 0 0 0 0 rgba(37,211,102,.4); }
+      50%     { box-shadow: 0 12px 30px rgba(37,211,102,.45), 0 0 0 14px rgba(37,211,102,0); }
+    }
+
+    /* ===================== LIGHTBOX ===================== */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 100; background: rgba(40,30,30,.82);
+      display: none; align-items: center; justify-content: center; padding: 24px;
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    }
+    .lightbox.open { display: flex; animation: fade .3s ease; }
+    .lightbox img { max-width: 100%; max-height: 86vh; border-radius: 18px; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+    .lightbox-close {
+      position: absolute; top: 20px; left: 20px; width: 46px; height: 46px; border-radius: 50%;
+      background: rgba(255,255,255,.16); color: #fff; border: none; font-size: 1.6rem; cursor: pointer; display: grid; place-items: center;
+    }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ===================== REVEAL ===================== */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (min-width: 620px) {
+      .about-grid { flex-direction: row; align-items: center; }
+      .about-photo { flex: 0 0 300px; }
+      .service-cards { grid-template-columns: repeat(3, 1fr); }
+      .contact-actions { flex-direction: row; justify-content: center; }
+      .contact-actions .btn { width: auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+      .hero-bg { animation: none; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body data-theme="blush">
+
+  <!-- HEADER -->
+  <header id="header">
+    <a href="#top" class="brand">Michal Haimov<span>.</span></a>
+    <div class="theme-toggle" role="group" aria-label="בחירת ערכת צבע">
+      <button class="swatch blush active" data-theme="blush" aria-label="ערכת ורוד-בז'"></button>
+      <button class="swatch lavender" data-theme="lavender" aria-label="ערכת לבנדר"></button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-bg"></div>
+    <div class="hero-photo">
+      <img src="%D7%A6%D7%99%D7%9C%D7%95%D7%9D%20%D7%9E%D7%A1%D7%9A%202026-07-02%20%D7%91-21.24.32.png" alt="מיכל — מעצבת שיער" />
+    </div>
+    <h1>Michal Haimov</h1>
+    <div class="role">מעצבת שיער</div>
+    <p class="tagline">עיצוב שיער מוקפד לרגעים הכי מיוחדים — מגיעה אלייך למקום האירוע.</p>
+    <div class="hero-tags">
+      <span>כלות</span><span>ערב</span><span>אופנה</span><span>אזור המרכז</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-wa" id="hero-wa" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.44 9.9-9.9a9.86 9.86 0 0 0-2.9-7A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.81.83-3.03-.2-.31a8.22 8.22 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.69 8.24-8.24 8.24Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+        לתיאום בוואטסאפ
+      </a>
+      <a class="btn btn-ghost" id="hero-ig" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+        לעמוד האינסטגרם
+      </a>
+    </div>
+    <a href="#about" class="scroll-hint" aria-label="גלול למטה">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid reveal">
+      <div class="about-photo"><img src="images/abuot.jpg" alt="מיכל — מעצבת שיער" /></div>
+      <div class="about-text">
+        <div class="eyebrow">קצת עליי</div>
+        <p class="lead">היי, אני מיכל — מעצבת שיער לכלות, אירועי ערב ואופנה.</p>
+        <p>אני מאמינה שעיצוב שיער הוא הרבה מעבר לתסרוקת: זו הדרך להרגיש הכי יפה שיש ביום הכי חשוב. אני מגיעה אלייך עד למקום האירוע, מקשיבה בדיוק לרצון שלך, ומעצבת מראה מדויק שמחזיק לאורך כל הערב.</p>
+        <div class="about-stats">
+          <div class="stat"><b>100%</b><small>עבודה אישית ומוקפדת</small></div>
+          <div class="stat"><b>מגיעה</b><small>עד למקום האירוע</small></div>
+          <div class="stat"><b>מרכז</b><small>אזור השירות</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center">
+        <div class="eyebrow">השירותים שלי</div>
+        <h2 class="section-title">מה מתאים לך?</h2>
+        <p class="section-sub">כל מראה נבנה בהתאמה אישית, לך ולאירוע שלך.</p>
+      </div>
+      <div class="service-cards">
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c-2.5 3-4 5.2-4 7.5a4 4 0 0 0 8 0C16 8.2 14.5 6 12 3Z"/><path d="M7 14c-1.2 2-1.8 3.4-1.8 4.6M17 14c1.2 2 1.8 3.4 1.8 4.6"/></svg>
+          </div>
+          <h3>כלות</h3>
+          <p>עיצוב שיער מרהיב ליום החתונה — מדויק, יציב ומחזיק מהבוקר ועד הריקוד האחרון.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 5.6L20 8l-4 4 1 6-5-2.8L7 18l1-6-4-4 5.6-.4L12 2Z"/></svg>
+          </div>
+          <h3>ערב</h3>
+          <p>אסוף, גלים או קוקו מושלם לכל אירוע — מראה זוהר שמושך את כל המבטים.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20c2-6 5-9 8-9s6 3 8 9"/><circle cx="12" cy="6" r="3"/></svg>
+          </div>
+          <h3>אופנה</h3>
+          <p>עיצובי שיער לצילומים, קמפיינים ואירועי אופנה — קריאייטיב ומראה עדכני.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center">
+        <div class="eyebrow">תיק עבודות</div>
+        <h2 class="section-title">גלריית עבודות</h2>
+        <p class="section-sub">רגעים אמיתיים מהכיסא שלי.</p>
+      </div>
+      <div class="gallery-viewport reveal">
+        <div class="gallery-track" id="galleryTrack"></div>
+      </div>
+      <div class="gallery-nav">
+        <button class="rev-arrow" id="galPrev" aria-label="התמונה הקודמת">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="gallery-dots" id="galDots"></div>
+        <button class="rev-arrow" id="galNext" aria-label="התמונה הבאה">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center">
+        <div class="eyebrow">מה אומרות עליי</div>
+        <h2 class="section-title">לקוחות מספרות</h2>
+        <p class="section-sub">ביקורות אמיתיות ישר מהוואטסאפ 💗</p>
+      </div>
+      <div class="rev-viewport reveal">
+        <div class="rev-track" id="revTrack"></div>
+      </div>
+      <div class="rev-nav">
+        <button class="rev-arrow" id="revPrev" aria-label="הקודם">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="rev-dots" id="revDots"></div>
+        <button class="rev-arrow" id="revNext" aria-label="הבא">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center">
+        <div class="eyebrow">יצירת קשר</div>
+        <h2 class="section-title">בואי נדבר</h2>
+      </div>
+      <div class="contact-card reveal">
+        <h2>מתלבטת לגבי המראה שלך?</h2>
+        <p>שלחי לי הודעה בוואטסאפ ונתאם יחד את עיצוב השיער המושלם לאירוע שלך.</p>
+        <div class="contact-actions">
+          <a class="btn btn-wa" id="contact-wa" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.44 9.9-9.9a9.86 9.86 0 0 0-2.9-7A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.81.83-3.03-.2-.31a8.22 8.22 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.69 8.24-8.24 8.24Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+            שליחת הודעה בוואטסאפ
+          </a>
+          <a class="btn btn-ghost" id="contact-ig" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+            עקבו באינסטגרם
+          </a>
+        </div>
+        <div class="contact-meta">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            מגיעה עד למקום האירוע · אזור המרכז
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="brand">Michal Haimov<span style="color:var(--accent)">.</span></div>
+    <div class="footer-social">
+      <a id="footer-ig" href="#" target="_blank" rel="noopener" aria-label="אינסטגרם">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a id="footer-wa" href="#" target="_blank" rel="noopener" aria-label="וואטסאפ">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.44 9.9-9.9a9.86 9.86 0 0 0-2.9-7A9.83 9.83 0 0 0 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+      </a>
+    </div>
+    <p>© <span id="year"></span> Michal Haimov · מעצבת שיער · כל הזכויות שמורות</p>
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <a class="fab" id="fab-wa" href="#" target="_blank" rel="noopener" aria-label="שליחת הודעה בוואטסאפ">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.44 9.9-9.9a9.86 9.86 0 0 0-2.9-7A9.83 9.83 0 0 0 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+  </a>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="סגירה">✕</button>
+    <img src="" alt="צילום מסך ביקורת" id="lightboxImg" />
+  </div>
+
+  <script>
+    /* ============ CONFIG ============ */
+    var WHATSAPP = '972537202078';
+    var WA_TEXT  = encodeURIComponent('היי מיכל! ראיתי את האתר שלך ואשמח לתאם עיצוב שיער 💗');
+    var WA_URL   = 'https://wa.me/' + WHATSAPP + '?text=' + WA_TEXT;
+    var IG_URL   = 'https://instagram.com/michal_hairstyles';
+
+    /* Raw asset paths — encoded at runtime with encodeURI (handles Hebrew + spaces) */
+    var PORTFOLIO = [
+      'images/צילום מסך 2026-07-02 ב-20.37.53.png',
+      'images/צילום מסך 2026-07-02 ב-20.38.17.png',
+      'images/צילום מסך 2026-07-02 ב-20.38.27.png',
+      'images/צילום מסך 2026-07-02 ב-20.38.39.png',
+      'images/צילום מסך 2026-07-02 ב-20.39.04.png',
+      'images/צילום מסך 2026-07-02 ב-20.39.15.png',
+      'images/צילום מסך 2026-07-02 ב-20.39.29.png'
+    ];
+
+    var REVIEWS = [
+      { quote: 'אמאלהההה איזה מטורף! השיער החזיק, באמת אין כמוך. את מדהימה והיחס מושלם — יצאתי הכי מרוצה בעולם.', author: 'שיראל', img: 'reviwes/WhatsApp Image 2026-07-02 at 20.45.36.jpeg' },
+      { quote: 'מיכלי אהובתי! חייבת להגיד שהמחמאות על הקוקו פשוט לא הפסיקו!!! אין עלייך יא אלופה. מעכשיו את איתי לכל אירוע.', author: 'לקוחה מאושרת', img: 'reviwes/WhatsApp Image 2026-07-02 at 20.47.08.jpeg' },
+      { quote: 'מיכלי עשית אותי מעלפת, אין עלייך ועל הידיים שלך. כמה פרגון ותגובות טובות קיבלתי!', author: 'דיאנה יונוסוב', img: 'reviwes/WhatsApp Image 2026-07-02 at 20.48.04.jpeg' },
+      { quote: 'תקשיבי… השיער פשוט לא זז לבנות! מדהים.', author: 'לקוחה מרוצה', img: 'reviwes/WhatsApp Image 2026-07-02 at 20.50.05.jpeg' },
+      { quote: 'מושלמת שלי, את! איזה ידייםםם, איזה שיער מטורף יצא!!!', author: 'כלה מאושרת', img: 'reviwes/WhatsApp Image 2026-07-02 at 20.50.07.jpeg' },
+      { quote: 'חיים שלי את! לא יודעת כמה החמיאו לי היום על השיער! אין עוד אחת בעולםםם, איזה מזל שיש לי אותך. תודה 🤗', author: 'לקוחה נרגשת', img: 'reviwes/WhatsApp Image 2026-07-02 at 21.01.51.jpeg' }
+    ];
+
+    var enc = function (p) { return encodeURI(p); };
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ============ WIRE LINKS ============ */
+    ['hero-wa','contact-wa','footer-wa','fab-wa'].forEach(function(id){ document.getElementById(id).href = WA_URL; });
+    ['hero-ig','contact-ig','footer-ig'].forEach(function(id){ document.getElementById(id).href = IG_URL; });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* Hero + about photos */
+    document.querySelectorAll('[data-img]').forEach(function(el){
+      el.src = enc(PORTFOLIO[parseInt(el.getAttribute('data-img'),10)]);
+    });
+
+    /* ============ THEME TOGGLE ============ */
+    var saved = null;
+    try { saved = localStorage.getItem('michal-theme'); } catch(e){}
+    if (saved) document.body.setAttribute('data-theme', saved);
+    function setActiveSwatch(t){
+      document.querySelectorAll('.swatch').forEach(function(s){
+        s.classList.toggle('active', s.getAttribute('data-theme') === t);
+      });
+    }
+    setActiveSwatch(document.body.getAttribute('data-theme'));
+    document.querySelectorAll('.swatch').forEach(function(s){
+      s.addEventListener('click', function(){
+        var t = s.getAttribute('data-theme');
+        document.body.setAttribute('data-theme', t);
+        setActiveSwatch(t);
+        try { localStorage.setItem('michal-theme', t); } catch(e){}
+      });
+    });
+
+    /* ============ HEADER SCROLL ============ */
+    var header = document.getElementById('header');
+    window.addEventListener('scroll', function(){
+      header.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    /* ============ PORTFOLIO GALLERY ============ */
+    var galTrack = document.getElementById('galleryTrack');
+    var galDots = document.getElementById('galDots');
+    var galIndex = 0;
+
+    PORTFOLIO.forEach(function(src, i){
+      var slide = document.createElement('div'); slide.className = 'g-slide';
+      var card = document.createElement('div'); card.className = 'g-card';
+      var img = document.createElement('img'); img.src = enc(src); img.alt = 'עבודת שיער של Michal Haimov'; img.loading = 'lazy';
+      card.appendChild(img); slide.appendChild(card); galTrack.appendChild(slide);
+
+      var dot = document.createElement('button'); dot.className = 'g-dot' + (i === 0 ? ' active' : ''); dot.setAttribute('aria-label', 'תמונה ' + (i + 1));
+      dot.addEventListener('click', function(){ galGoTo(i); });
+      galDots.appendChild(dot);
+    });
+
+    function galRender(){
+      galTrack.style.transform = 'translateX(' + (galIndex * 100) + '%)';
+      galDots.querySelectorAll('.g-dot').forEach(function(d, i){ d.classList.toggle('active', i === galIndex); });
+    }
+    function galGoTo(i){ galIndex = (i + PORTFOLIO.length) % PORTFOLIO.length; galRender(); }
+    function galNext(){ galGoTo(galIndex + 1); }
+    function galPrev(){ galGoTo(galIndex - 1); }
+    document.getElementById('galNext').addEventListener('click', galNext);
+    document.getElementById('galPrev').addEventListener('click', galPrev);
+
+    // swipe
+    var gvp = document.querySelector('.gallery-viewport'); var gsx = 0, gdx = 0;
+    gvp.addEventListener('touchstart', function(e){ gsx = e.touches[0].clientX; gdx = 0; }, { passive: true });
+    gvp.addEventListener('touchmove', function(e){ gdx = e.touches[0].clientX - gsx; }, { passive: true });
+    gvp.addEventListener('touchend', function(){
+      if (Math.abs(gdx) > 45){ if (gdx < 0) galNext(); else galPrev(); }
+    });
+
+    /* ============ REVIEWS SLIDER ============ */
+    var revTrack = document.getElementById('revTrack');
+    var revDots = document.getElementById('revDots');
+    var revIndex = 0, revTimer = null;
+
+    REVIEWS.forEach(function(r, i){
+      var slide = document.createElement('div'); slide.className = 'rev-slide';
+      var card = document.createElement('div'); card.className = 'rev-card';
+      card.innerHTML =
+        '<div class="rev-stars">★★★★★</div>' +
+        '<p class="rev-quote">' + r.quote + '</p>' +
+        '<div class="rev-author">— ' + r.author + '</div>' +
+        '<button class="rev-proof" data-src="' + enc(r.img) + '">' +
+          '<img src="' + enc(r.img) + '" alt="צילום מסך ביקורת" loading="lazy" />' +
+          'צפייה בצילום המקורי' +
+        '</button>';
+      slide.appendChild(card); revTrack.appendChild(slide);
+
+      var dot = document.createElement('button'); dot.className = 'rev-dot' + (i===0?' active':''); dot.setAttribute('aria-label','ביקורת ' + (i+1));
+      dot.addEventListener('click', function(){ goTo(i); });
+      revDots.appendChild(dot);
+    });
+
+    function render(){
+      revTrack.style.transform = 'translateX(' + (revIndex * 100) + '%)';
+      revDots.querySelectorAll('.rev-dot').forEach(function(d,i){ d.classList.toggle('active', i===revIndex); });
+    }
+    function goTo(i){ revIndex = (i + REVIEWS.length) % REVIEWS.length; render(); restart(); }
+    function next(){ goTo(revIndex + 1); }
+    function prev(){ goTo(revIndex - 1); }
+    document.getElementById('revNext').addEventListener('click', next);
+    document.getElementById('revPrev').addEventListener('click', prev);
+
+    function restart(){ if(revTimer) clearInterval(revTimer); if(!reduceMotion) revTimer = setInterval(next, 5200); }
+    restart();
+
+    // swipe reviews
+    var rvp = document.querySelector('.rev-viewport'); var rsx = 0, rdx = 0;
+    rvp.addEventListener('touchstart', function(e){ rsx = e.touches[0].clientX; rdx = 0; if(revTimer) clearInterval(revTimer); }, { passive: true });
+    rvp.addEventListener('touchmove', function(e){ rdx = e.touches[0].clientX - rsx; }, { passive: true });
+    rvp.addEventListener('touchend', function(){
+      if (Math.abs(rdx) > 45){ if (rdx < 0) next(); else prev(); } else { restart(); }
+    });
+
+    /* ============ LIGHTBOX ============ */
+    var lb = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightboxImg');
+    document.addEventListener('click', function(e){
+      var btn = e.target.closest ? e.target.closest('.rev-proof') : null;
+      if (btn){ lbImg.src = btn.getAttribute('data-src'); lb.classList.add('open'); }
+    });
+    function closeLb(){ lb.classList.remove('open'); }
+    document.getElementById('lightboxClose').addEventListener('click', closeLb);
+    lb.addEventListener('click', function(e){ if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLb(); });
+
+    /* ============ REVEAL ON SCROLL ============ */
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  </script>
+</body>
+</html>
