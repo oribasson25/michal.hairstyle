@@ -41,16 +41,25 @@ function verifyToken(token, secret) {
   }
 }
 
-/* ===== סיסמה: scrypt$N$r$p$saltHex$hashHex ===== */
+/* ===== סיסמה: pbkdf2$iterations$saltHex$hashHex או scrypt$N$r$p$saltHex$hashHex ===== */
 function verifyPassword(password, stored) {
   try {
     const parts = String(stored || '').split('$');
-    if (parts.length !== 6 || parts[0] !== 'scrypt') return false;
-    const N = parseInt(parts[1], 10), r = parseInt(parts[2], 10), p = parseInt(parts[3], 10);
-    const salt = Buffer.from(parts[4], 'hex');
-    const hash = Buffer.from(parts[5], 'hex');
-    const key = crypto.scryptSync(String(password), salt, hash.length, { N: N, r: r, p: p, maxmem: 64 * 1024 * 1024 });
-    return crypto.timingSafeEqual(key, hash);
+    if (parts[0] === 'pbkdf2' && parts.length === 4) {
+      const iterations = parseInt(parts[1], 10);
+      const salt = Buffer.from(parts[2], 'hex');
+      const hash = Buffer.from(parts[3], 'hex');
+      const key = crypto.pbkdf2Sync(String(password), salt, iterations, hash.length, 'sha256');
+      return crypto.timingSafeEqual(key, hash);
+    }
+    if (parts[0] === 'scrypt' && parts.length === 6) {
+      const N = parseInt(parts[1], 10), r = parseInt(parts[2], 10), p = parseInt(parts[3], 10);
+      const salt = Buffer.from(parts[4], 'hex');
+      const hash = Buffer.from(parts[5], 'hex');
+      const key = crypto.scryptSync(String(password), salt, hash.length, { N: N, r: r, p: p, maxmem: 64 * 1024 * 1024 });
+      return crypto.timingSafeEqual(key, hash);
+    }
+    return false;
   } catch (e) {
     return false;
   }

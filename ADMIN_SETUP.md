@@ -12,15 +12,17 @@
 5. תחת **Permissions → Repository permissions** → **Contents** → בחרו **Read and write**
 6. לחצו **Generate token** והעתיקו את הטוקן (מתחיל ב-`github_pat_`)
 
+> ⚠️ **לעולם אל תדביקו את הטוקן בקובץ בפרויקט** — הריפו ציבורי. הטוקן מודבק אך ורק ב-Vercel (שלב 4).
+
 ## שלב 2 — יצירת סיסמה מוצפנת (hash)
 
-בחרו סיסמה חזקה, ואז הריצו בטרמינל (החליפו את `הסיסמה-שלכם`):
+בחרו סיסמה חזקה (לא שם או מילה פשוטה), ואז הריצו בטרמינל (החליפו את `הסיסמה-שלכם`):
 
 ```bash
-python3 -c "import hashlib,os; pw='הסיסמה-שלכם'.encode(); salt=os.urandom(16); key=hashlib.scrypt(pw, salt=salt, n=16384, r=8, p=1, dklen=64); print('scrypt\$16384\$8\$1\$'+salt.hex()+'\$'+key.hex())"
+python3 -c "import hashlib,os; pw='הסיסמה-שלכם'.encode(); salt=os.urandom(16); key=hashlib.pbkdf2_hmac('sha256', pw, salt, 310000, dklen=32); print('pbkdf2\$310000\$'+salt.hex()+'\$'+key.hex())"
 ```
 
-העתיקו את הפלט (מתחיל ב-`scrypt$`).
+העתיקו את הפלט (מתחיל ב-`pbkdf2$`).
 
 ## שלב 3 — יצירת מפתח חתימה אקראי
 
@@ -39,7 +41,7 @@ python3 -c "import os; print(os.urandom(32).hex())"
 | `GITHUB_TOKEN` | הטוקן משלב 1 |
 | `GITHUB_REPO` | `oribasson25/michal.hairstyle` |
 | `ADMIN_USER` | שם המשתמש שבחרתם (למשל `michal`) |
-| `ADMIN_PASS_HASH` | הפלט משלב 2 (כולל ה-`scrypt$...`) |
+| `ADMIN_PASS_HASH` | הפלט משלב 2 (כולל ה-`pbkdf2$...`) |
 | `JWT_SECRET` | הפלט משלב 3 |
 
 בכל אחד — סמנו את כל הסביבות (Production, Preview, Development).
